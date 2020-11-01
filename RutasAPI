@@ -1,0 +1,137 @@
+
+(A) = solo para admins
+
+(U) = Para usuarios en general
+
+usuario es lo mismo que cliente
+
+
+--------------------Login:
+
+/login
+    loguear usuario
+
+/logout
+    desloguear usuario
+
+--------------------Usuarios:
+
+GET
+
+/cliente (A)
+    Todos los usuarios
+
+/cliente/:username (A)
+    Un usuario
+
+/cliente/:username/planes (A)
+    Planes del cliente
+
+/cliente/:username/planes/:idplan (A)
+    Un plan de un cliente
+
+/cliente/:username/planes/:idplan/dias (A)
+    Dias de un plan de un cliente
+
+/cliente/:username/plan_asignado (A)
+    Obener el plan asignado al cliente
+
+
+POST
+
+/cliente
+    Crrear un cliente
+
+/cliente/:username/planes (A)
+    Agregar un plan a un cliente
+
+/cliente/:username/planes/:idplan/dias (A)
+    Agregar un dia a un plan de un cliente
+
+/cliente/:username/planes/:idplan/dias/:iddia/ejercicios (A)
+    Agregar un ejercicio a un dia de un plan de un cliente
+
+/cliente/:username/planes/:idplan/dias/:iddia/ejercicios/:idejercicio/sesiones (A)
+    Agregar una sesion a un ejercicio a un dia de un plan de un cliente
+
+PUT
+
+/cliente/:username
+    Modifica un usuario
+
+Delete
+
+/cliente/:username
+    Eliminar un usuario
+
+
+---------------myinfo:
+
+GET
+
+/myinfo
+    Informacion del usuario (los planes no cargan, solo sus ids)  (U)
+
+/myinfo/plan_asignado (U)
+    Obtener el plan asignado al usuario
+
+/myinfo/planes
+    Los planes del usuario (U)
+
+/myinfo/planes/:idplan (U)
+    Obtiene un plan del usuario
+
+POST
+/myinfo/planes (U)
+    Agrega un plan al usuario
+
+/myinfo/changepassword (U)
+    Cambiar password
+
+/myinfo/planes/:idplan/dias (U)
+    Agregar un dia a un plan
+
+/myinfo/planes/:idplan/dias/:iddia/ejercicios (U)
+    Agregar un ejercicio a un dia de un plan
+
+/myinfo/planes/:idplan/dias/:iddia/ejercicios/:idejercicio/sesiones (U)
+    Agregar una sesion a un ejercicio
+
+/myinfo/plan_asignado/dias/:iddia/ejercicios/:idejercicio/sesiones (U)
+    Agregar una sesion al plan asignado
+
+PUT
+/myinfo (U)
+    Modifica informacion del usuario
+
+/myinfo/planes/:idplan (U)
+    Modifica un plan del usuario
+
+Delete
+
+/planes/:idplan/dias/:iddia/ejercicios/:idejercicio/sesiones/:idsesion (U) en realidad es un post
+
+/myinfo/planes/:idplan (U)
+    Elimina un plan del usuario
+
+
+--------------tipos de ejercicios
+
+GET
+
+/tiposEjercicio (U)
+    Obtener todos los tipos de ejercicio
+
+/tiposEjercicio/:id (U)
+    Obtener un tipo de ejercicio segun id
+
+POST
+
+/tiposEjercicio (A)
+    Crea un tipo de ejercicio
+
+PUT
+
+Delete
+/tiposEjercicio/:id (A)
+    Elimina un tipo de ejercicio
