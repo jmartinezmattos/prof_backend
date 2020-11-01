@@ -5,7 +5,8 @@ const Profesor = require('../models/profesor')
 
 router.get('/', async (req, res)=> {
     try{
-        res.send("De aca salen cosas")
+        const profesores = await Profesor.find()
+        res.json(profesores)
     }catch{
         res.status(500).json({message: err.message})
     }

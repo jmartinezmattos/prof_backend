@@ -13,8 +13,10 @@ const validPassword = require('../lib/passwordUtils').validPassword;
 
 
 //esta funcion se encarga de verificar que el usuario se al posta
-const verifyCallback = (username, password, done) => { //hay que nombrarlos username y password si no definis custom fields
+const verifyCallback = (username, password, tipo,done) => { //hay que nombrarlos username y password si no definis custom fields
     
+    console.log(tipo)
+
     Alumno.findOne({username: username})
         .then((user) => {
 
@@ -65,9 +67,9 @@ passport.deserializeUser((userId, done) => {
     Alumno.findById(userId)
     .then((user) => {
         if(!user){
-            Profesor.findById(userId){
-                done(null, user)
-            }
+            Profesor.findById(userId).then((userprofe) => {
+                done(null, userprofe)
+            })
         }else{
             done(null, user);
         }

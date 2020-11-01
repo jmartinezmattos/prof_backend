@@ -44,9 +44,12 @@ router.post('/profesor', async (req, res) => {
            hash: hash,
            salt: salt
        })
+
+       const newProfe = await profesor.save()
+        res.status(201).json(profesor)
        
     } catch (error) {
-        res.send(error)
+        res.status(400).json({message: err.message})
     }
 })
 
