@@ -16,6 +16,7 @@ const validPassword = require('../lib/passwordUtils').validPassword;
 const verifyCallback = (username, password, tipo,done) => { //hay que nombrarlos username y password si no definis custom fields
     
     console.log(tipo)
+    
 
     Alumno.findOne({username: username})
         .then((user) => {
