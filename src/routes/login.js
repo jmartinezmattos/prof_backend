@@ -27,6 +27,22 @@ router.get('/alumno', (req, res, next) => {
 
 });
 
+var alumn = function (req, res, next) {
+    req.body.tipo = 'a'
+    console.log(req.body)
+    next()
+};
+
+var prof = function (req, res, next) {
+    req.body.tipo = 'p'
+    console.log(req.body)
+    next()
+};
+
+
+
+router.post('/alumno', alumn, passport.authenticate('local', {failureRedirect: '/login-failure', successRedirect: '/login/login-success'}));
+router.post('/profesor', prof, passport.authenticate('local', {failureRedirect: '/login-failure', successRedirect: '/login/login-success'}));
 
 // Visiting this route logs the user out
 router.get('/logout', (req, res, next) => {

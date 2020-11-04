@@ -13,24 +13,23 @@ const validPassword = require('../lib/passwordUtils').validPassword;
 
 
 //esta funcion se encarga de verificar que el usuario se al posta
-const verifyCallback = (username, password, tipo,done) => { //hay que nombrarlos username y password si no definis custom fields
+const verifyCallback = (req, username, password,done) => { //hay que nombrarlos username y password si no definis custom fields
     
-    console.log(tipo)
+    console.log("aca va el tipo")
+    console.log(req.body)
+    console.log(req.body.tipo)
     
+    tipo = req.body.tipo
 
-    Alumno.findOne({username: username})
+    if(tipo == 'a'){
+        console.log("Entro por la ruta de alumnos")
+        
+        Alumno.findOne({username: username})
         .then((user) => {
 
             if(!user){
-                
-                Profesor.findOne({username: username}).then((userprofe) => {
-                    user = userprofe
-                })
-
-                if(!user){
-                    console.log(`No hay usuario de nombre "${username}"`)
-                    return done(null, false)//avisa que no esta el usuario en la bdd null = no hay usuario, false = no hay error
-                }
+                console.log(`No hay usuario de nombre "${username}"`)
+                return done(null, false)//avisa que no esta el usuario en la bdd null = no hay usuario, false = no hay error
             }
             
         //Aca ya encontro o no esl usuario
@@ -52,9 +51,49 @@ const verifyCallback = (username, password, tipo,done) => { //hay que nombrarlos
         .catch((err)=>{
             done(err);
         })
+
+    }else if(tipo == 'p'){
+        console.log("Entro por la ruta profe")
+        Profesor.findOne({username: username})
+        .then((user) => {
+
+            if(!user){
+                  console.log(`No hay usuario de nombre "${username}"`)
+                  return done(null, false)//avisa que no esta el usuario en la bdd null = no hay usuario, false = no hay error
+            }
+            
+            
+        //Aca ya encontro o no esl usuario
+
+            console.log(`Se encontro el usuario "${username}"`)
+
+            //aca nos fijamos si la password esta bien
+            const isValid = validPassword(password, user.hash, user.salt)
+
+            if(isValid){
+                console.log("la pass esta bien")
+                return done(null, user) //nos deja entrar en la ruta
+            }else{
+                console.log("la pass esta mal")
+                return done(null, false) //no entra a la siguiene ruta
+            }
+
+        })
+        .catch((err)=>{
+            done(err);
+        })
+    }
+    else{
+        console.log("le falta el tipo de ruta")
+        return done(null, false) //no entra a la siguiene ruta
+    }
+
 }
 
-const strategy = new LocalStrategy( /*customFields,*/ verifyCallback)
+const strategy = new LocalStrategy( /*customFields,*/ {
+    passReqToCallback: true
+    },
+    verifyCallback)
 
 passport.use(strategy)
 
