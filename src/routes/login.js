@@ -18,7 +18,7 @@ router.get('/profesor', async (req, res) => {
 
 router.get('/alumno', (req, res, next) => {
    
-    const form = '<h1>Login Page</h1><form method="POST" action="/login">\
+    const form = '<h1>Login Page</h1><form method="POST" action="/login/alumno">\
     Enter Username:<br><input type="text" name="username">\
     <br>Enter Password:<br><input type="password" name="password">\
     <br><br><input type="submit" value="Submit"></form>';
