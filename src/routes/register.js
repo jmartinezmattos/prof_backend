@@ -42,7 +42,8 @@ router.post('/profesor', async (req, res) => {
            mail: req.body.mail,
            fecha_nacimiento: req.body.fecha_nacimiento,
            hash: hash,
-           salt: salt
+           salt: salt,
+           foto_perfil: req.body.foto_perfil
        })
 
        const newProfe = await profesor.save()
