@@ -30,12 +30,18 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.json())
 
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  });
+
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // res.header('Access-Control-Allow-Credentials', true);
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     //res.header('Access-Control-Allow-Origin', "http//localhost:3000");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization, Cookie');
+    // res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization, Cookie');
     if ('OPTIONS' == req.method) {
          res.send(200);
      } else {
