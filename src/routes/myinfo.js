@@ -6,9 +6,11 @@ const router = express.Router()
 //Getting user info
 router.get('/', async (req, res) => {
     //Chequear seguridad, se esta enviando el salt y el hash al usuario
+    console.log("entro en myinfo...")
     datos = req.user
     datos.hash = null
     datos.salt = null
+    console.log("...esta por salir")
     res.send(req.user)
 })
 
