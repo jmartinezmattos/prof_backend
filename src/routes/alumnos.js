@@ -23,7 +23,7 @@ router.get('/myinfo', async (req, res)=> {
 
 //Getting one
 router.get('/:username', getAlumno,(req, res)=> {
-    res.send(res.Alumno)
+    res.send(res.alumno)
 })
 
 //Creating one

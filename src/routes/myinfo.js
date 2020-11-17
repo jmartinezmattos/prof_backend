@@ -15,6 +15,15 @@ router.get('/', async (req, res) => {
 })
 
 //Getting user info
+router.get('/muestra', async (req, res) => {
+    //Chequear seguridad, se esta enviando el salt y el hash al usuario
+    datos = req.user
+    datos.hash = null
+    datos.salt = null
+    res.send(req.user)
+})
+
+//Getting user info
 router.post('/', async (req, res) => {
     //Chequear seguridad, se esta enviando el salt y el hash al usuario
     datos = req.user
