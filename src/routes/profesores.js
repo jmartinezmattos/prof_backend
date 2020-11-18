@@ -34,7 +34,7 @@ router.post('/', async (req, res)=> {
 //Agregar un plan a un cliente
 router.post('/:username/materias', getProfesor,(req, res)=> {
     
-    console.log(`Entro al post de materias del profe ${req.username}`)
+    console.log("Entro al post de materias del profe")
     const newMateria = new Materia(req.body)
     //newPlan.markModified("materias")
     newMateria.save()
