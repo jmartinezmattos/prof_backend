@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Profesor = require('../models/profesor')
+const Materia = require('../models/materia')
 
 
 router.get('/', async (req, res)=> {
@@ -30,6 +31,17 @@ router.post('/', async (req, res)=> {
     }
 })
 
+//Agregar un plan a un cliente
+router.post('/:username/materias', getProfesor,(req, res)=> {
+    
+    const newPlan = new Materia(req.body)
+    //newPlan.markModified("materias")
+    newMateria.save()
+    res.Profesor.materias.push(newMateria)
+    docs.markModified('materias')
+    res.Profesor.save();
+    res.send(newMateria)
+})
 
 async function getProfesor(req, res, next){ //faltaria que el get sea segun la cedula
     
@@ -46,6 +58,7 @@ async function getProfesor(req, res, next){ //faltaria que el get sea segun la c
     res.profesor=profesor //IMPORTANTE ESTO SE USA DESPUES
     next()
 }
+
 
 
 module.exports = router

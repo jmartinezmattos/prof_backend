@@ -43,7 +43,7 @@ const ProfesorSchema = new Schema({
         type: Array
     },
     venue: {
-        type: [VenueSchema]
+        type: []
     },
     foto_perfil: String
 
