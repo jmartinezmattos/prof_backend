@@ -36,6 +36,7 @@ router.post('/:username/materias', getProfesor,(req, res)=> {
     
     console.log("Entro al post de materias del profe")
     const newMateria = new Materia(req.body)
+    res.send(res.profesor)
     //newPlan.markModified("materias")
     newMateria.save()
     console.log("Ahi va el username del profe")
