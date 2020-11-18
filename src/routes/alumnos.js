@@ -41,6 +41,26 @@ router.post('/', async (req, res)=> {
     }
 })
 
+router.post('/:username/notification',getAlumno, async (req, res)=> {
+    
+    console.log(req.body)
+    res.alumno.push({notification: req.body})
+    const notification = new Alumno(req.body)
+
+    
+
+
+    try{
+        user.update({_id: req.params.id},
+            res.alumno.push({notification: req.body}), function(err, docs){
+            if(err) res.json(err);
+        });
+        res.status(201).json(res.body)
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+})
+
 
 async function getAlumno(req, res, next){ //faltaria que el get sea segun la cedula
     
