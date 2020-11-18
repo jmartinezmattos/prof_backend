@@ -45,7 +45,8 @@ const ProfesorSchema = new Schema({
     venue: {
         type: []
     },
-    foto_perfil: String
+    foto_perfil: String,
+    materias: []
 
 
 
