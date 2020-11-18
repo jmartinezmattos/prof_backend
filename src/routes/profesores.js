@@ -15,7 +15,7 @@ router.get('/', async (req, res)=> {
 
 //Getting one
 router.get('/:username', getProfesor,(req, res)=> {
-    res.send(res.Profesor)
+    res.send(res.profesor)
 })
 
 //Creating one
@@ -40,9 +40,9 @@ router.post('/:username/materias', getProfesor,(req, res)=> {
     newMateria.save()
     console.log("Ahi va el body del profe")
     console.log(Profesor.body)
-    res.Profesor.materias.push(newMateria)
+    res.profesor.materias.push(newMateria)
     docs.markModified('materias')
-    res.Profesor.save();
+    res.profesor.save();
     res.send(newMateria)
 })
 
