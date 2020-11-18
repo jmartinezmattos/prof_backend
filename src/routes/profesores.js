@@ -60,6 +60,7 @@ async function getProfesor(req, res, next){ //faltaria que el get sea segun la c
         return res.status(500).json({message: err.message})
     }
     res.profesor=profesor //IMPORTANTE ESTO SE USA DESPUES
+    console.log(`El profe es: ${profesor.username}`)
     next()
 }
 
