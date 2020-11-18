@@ -22,6 +22,7 @@ const AlumnoSchema = new Schema({
      nro_contacto: String,
      notification: String,
      mail: String,
+     last_teacher: String,
      hash: String,
      salt: String
 
