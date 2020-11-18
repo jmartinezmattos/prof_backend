@@ -38,8 +38,8 @@ router.post('/:username/materias', getProfesor,(req, res)=> {
     const newMateria = new Materia(req.body)
     //newPlan.markModified("materias")
     newMateria.save()
-    console.log("Ahi va el body del profe")
-    console.log(res.profesor.body)
+    console.log("Ahi va el username del profe")
+    console.log(res.profesor.body.username)
     res.profesor.materias.push(newMateria)
     docs.markModified('materias')
     res.profesor.save();
