@@ -20,6 +20,7 @@ const AlumnoSchema = new Schema({
      },
      fecha_nacimiento: Date,
      nro_contacto: String,
+     notification: String,
      mail: String,
      hash: String,
      salt: String
