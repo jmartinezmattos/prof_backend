@@ -42,7 +42,7 @@ router.post('/:username/materias', getProfesor,(req, res)=> {
     console.log("Ahi va el username del profe")
     console.log(res.profesor.username)
     res.profesor.materias.push(newMateria)
-    profesor.markModified('materias')
+    res.profesor.markModified('materias')
     res.profesor.save();
     res.send(newMateria)
 })
